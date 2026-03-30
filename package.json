@@ -1,0 +1,20 @@
+{
+  "name": "routers",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/otiosumax/2#readme",
+  "bugs": {
+    "url": "https://github.com/otiosumax/2/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/otiosumax/2.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
