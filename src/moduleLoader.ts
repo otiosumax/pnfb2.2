@@ -6,12 +6,12 @@ import type Module from "./models/module.ts";
 export async function loadModulesFromConfig(
   configPath: string,
   modulesDir: string,
-): Promise<Map<string, any>> {
+): Promise<Map<string, Module>> {
   const raw = await fs.readFile(configPath, "utf-8");
   const cfg = JSON.parse(raw);
 
   const files = cfg.modules ?? [];
-  const loadedModules = new Map<string, any>();
+  const loadedModules = new Map<string, Module>();
 
   for (const file of files) {
     const full = path.resolve(modulesDir, file);
@@ -31,7 +31,7 @@ export async function loadModulesFromConfig(
 export function buildOrder(
   allModules: Map<string, Module>,
   enabledNames: string[],
-) {
+): Module[] {
   const enabledModules = new Map<string, Module>();
 
   for (const name of enabledNames) {
@@ -76,10 +76,10 @@ export function buildOrder(
     if (v === 0) q.push(k);
   }
 
-  const result = [];
+  const result: Module[] = [];
   while (q.length > 0) {
     const k = q.shift()!;
-    result.push(enabledModules.get(k));
+    result.push(enabledModules.get(k)!);
     for (const to of edges.get(k)!) {
       indeg.set(to, indeg.get(to)! - 1);
       if (indeg.get(to) === 0) q.push(to);

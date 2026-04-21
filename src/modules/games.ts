@@ -2,7 +2,7 @@ import { Container } from "../models/container.ts";
 import { type Game } from "../models/game.ts";
 import type Module from "../models/module.ts";
 
-export const GamesModule: Module = {
+const GamesModule: Module = {
   name: "games",
   requires: ["core"],
   register(container: Container) {
@@ -17,3 +17,5 @@ export const GamesModule: Module = {
     }));
   },
 };
+
+export default GamesModule;

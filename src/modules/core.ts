@@ -2,7 +2,7 @@ import { Container } from "../models/container.ts";
 import { type Game } from "../models/game.ts";
 import type Module from "../models/module.ts";
 
-export const CoreModule: Module = {
+const CoreModule: Module = {
   name: "core",
   requires: [],
   register(container: Container) {
@@ -28,3 +28,5 @@ export const CoreModule: Module = {
   },
   async init(container) {},
 };
+
+export default CoreModule;
