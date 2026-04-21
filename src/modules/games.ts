@@ -6,15 +6,25 @@ const GamesModule: Module = {
   name: "games",
   requires: ["core"],
   register(container: Container) {
-    container.addSingleton("games-catalog", () => ({
-      add(game: Game): void {
-        /*TODO: implement*/
-      },
-      search(querry: string): Game[] {
-        /*TODO: implement*/
-        return [];
-      },
-    }));
+    container.addSingleton("games-catalog", () => {
+      const games: Game[] = [];
+
+      return {
+        add(game: Game): void {
+          if (games.find((g) => g.id === game.id)) return;
+          games.push(game);
+        },
+        search(querry: string): Game[] {
+          const resultGames: Game[] = [];
+          for (const g of games) {
+            if (g.name.includes(querry)) {
+              resultGames.push(g);
+            }
+          }
+          return resultGames;
+        },
+      };
+    });
   },
 };
 

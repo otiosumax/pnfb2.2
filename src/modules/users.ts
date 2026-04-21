@@ -27,9 +27,12 @@ const UsersModule: Module = {
           user.games.push(gameId);
           console.log(this.findUserById(userId)?.games ?? "no games");
         },
-        getLibrary(user: User): Game[] {
-          /*TODO: implement*/
-          return [];
+        getLibrary(userId: string): string[] {
+          const user = this.findUserById(userId);
+          if (!user) {
+            return [];
+          }
+          return user.games;
         },
       };
     });
