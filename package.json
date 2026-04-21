@@ -15,8 +15,8 @@
   "type": "module",
   "main": "index.ts",
   "scripts": {
-    "build": "tsc",
-    "dev": "node src/index.ts"
+    "dev": "node src/index.ts",
+    "test": "node src/test/moduleLoader.test.ts"
   },
   "devDependencies": {
     "@types/node": "^25.6.0"

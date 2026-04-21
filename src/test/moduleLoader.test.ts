@@ -1,6 +1,6 @@
 import test from "node:test";
 import { buildOrder } from "../moduleLoader.ts";
-import assert, { deepEqual } from "node:assert";
+import assert from "node:assert";
 import { ModuleLoadError } from "../errors.ts";
 
 test("Порядок запуска учитывает зависимости", () => {
